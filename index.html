@@ -3,357 +3,302 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Colin Schuberth | Filmmaker & Director</title>
+<title>Cinematic Webflow MVP</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
-    font-family:'Inter', sans-serif;
-    color:#000;
-    background:#fff;
-}
-
-/* =========================
-   NAV
-========================= */
-nav{
-    position:absolute;
-    top:30px;
-    right:40px;
+    font-family:Inter;
     display:flex;
-    gap:40px;
-    font-family:'Oswald', sans-serif;
-    letter-spacing:2px;
-    font-size:14px;
-    z-index:10;
-}
-
-nav a{
-    text-decoration:none;
-    color:#000;
-}
-
-/* =========================
-   HERO
-========================= */
-.hero{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    position:relative;
+    height:100vh;
     overflow:hidden;
+    background:#fff;
+    color:#000;
 }
 
-.hero::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:
-        radial-gradient(circle, #000 1px, transparent 1.5px);
-    background-size:10px 10px;
-
-    mask-image:linear-gradient(
-        to bottom,
-        black 0%,
-        black 40%,
-        transparent 100%
-    );
-    opacity:0.9;
+/* ================= SIDEBAR ================= */
+#panel{
+    width:260px;
+    background:#111;
+    color:#fff;
+    padding:12px;
+    overflow:auto;
 }
 
-.hero h1{
-    font-family:'Oswald', sans-serif;
-    font-size:clamp(4rem, 10vw, 10rem);
-    line-height:0.9;
-    letter-spacing:2px;
-    z-index:2;
+#panel h2{
+    font-family:Oswald;
+    font-size:18px;
+    margin-bottom:10px;
+}
+
+button{
+    width:100%;
+    padding:10px;
+    margin:5px 0;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+/* ================= CANVAS ================= */
+#canvas{
+    flex:1;
+    overflow:auto;
+    padding:40px;
+}
+
+/* ================= SECTIONS ================= */
+.section{
+    border:1px dashed rgba(0,0,0,0.2);
+    padding:60px;
+    margin-bottom:30px;
     position:relative;
+}
+
+.section:hover{
+    border-color:#000;
+}
+
+.section[draggable="true"]{
+    cursor:grab;
+}
+
+/* ================= TYPOGRAPHY ================= */
+.hero-title{
+    font-family:Oswald;
+    font-size:90px;
+    line-height:0.9;
+    cursor:text;
 }
 
 .subtitle{
-    margin-top:20px;
-    font-family:'Oswald', sans-serif;
-    letter-spacing:4px;
-    font-size:1.1rem;
-    z-index:2;
-    position:relative;
-}
-
-/* =========================
-   SECTIONS
-========================= */
-section{
-    max-width:1100px;
-    margin:auto;
-    padding:120px 40px;
+    font-family:Oswald;
+    letter-spacing:3px;
+    margin-top:10px;
+    cursor:text;
 }
 
 .section-title{
-    font-family:'Oswald', sans-serif;
-    font-size:3.5rem;
-    margin-bottom:50px;
-    text-transform:uppercase;
+    font-family:Oswald;
+    font-size:36px;
+    margin-bottom:20px;
+    cursor:text;
 }
 
-/* =========================
-   ABOUT
-========================= */
+.text{
+    font-size:16px;
+    line-height:1.7;
+    max-width:70ch;
+    cursor:text;
+}
+
+/* ================= ABOUT ================= */
 .about{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:60px;
+    gap:40px;
     align-items:center;
 }
 
-.about p{
-    font-size:1.1rem;
-    line-height:1.8;
-    max-width:55ch;
-}
-
-.about-image{
-    position:relative;
-    overflow:hidden;
-    border:3px solid #000;
-}
-
-.about-image img{
+.about img{
     width:100%;
-    height:100%;
-    display:block;
-    object-fit:cover;
-    filter:grayscale(100%) contrast(120%);
-}
-
-.about-image::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:
-        radial-gradient(circle, rgba(0,0,0,0.4) 20%, transparent 21%);
-    background-size:8px 8px;
-    mix-blend-mode:multiply;
-    opacity:0.4;
-}
-
-/* =========================
-   WORK
-========================= */
-.video{
     border:3px solid #000;
-    margin-bottom:50px;
-    box-shadow:10px 10px 0 #000;
+    filter:grayscale(1);
+    cursor:pointer;
 }
 
+/* ================= VIDEO ================= */
 .video iframe{
     width:100%;
     aspect-ratio:16/9;
-    display:block;
+    border:3px solid #000;
 }
 
-.button{
-    display:inline-block;
-    margin:40px auto 0;
-    padding:14px 30px;
-    border:2px solid #000;
-    text-transform:uppercase;
-    letter-spacing:2px;
-    font-family:'Oswald', sans-serif;
-    text-decoration:none;
-    color:#000;
+/* ================= EDITABLE ================= */
+[contenteditable="true"]{
+    outline:1px dashed rgba(0,0,0,0.3);
 }
 
-.center{
-    text-align:center;
-}
-
-/* =========================
-   CONTACT
-========================= */
-footer{
+/* ================= CONTROL PANEL RIGHT STYLE ================= */
+#stylePanel{
+    position:fixed;
+    right:20px;
+    top:20px;
+    width:220px;
     background:#000;
     color:#fff;
-    padding:120px 40px 60px;
-    text-align:center;
-    position:relative;
-    overflow:hidden;
+    padding:12px;
+    font-size:12px;
 }
 
-footer::before{
-    content:"";
+#stylePanel input{
+    width:100%;
+    margin-top:5px;
+}
+
+/* ================= ADD BUTTON ================= */
+.add{
+    margin-bottom:20px;
+    border:2px solid #000;
+    padding:10px;
+    font-family:Oswald;
+    cursor:pointer;
+    background:#fff;
+}
+
+/* ================= DELETE ================= */
+.del{
     position:absolute;
-    inset:0;
-    background:
-        radial-gradient(circle, #fff 1px, transparent 1px);
-    background-size:12px 12px;
-    opacity:0.3;
-    mask-image:linear-gradient(to top, transparent, black 60%);
+    top:10px;
+    right:10px;
+    background:#000;
+    color:#fff;
+    font-size:12px;
+    padding:4px;
+    cursor:pointer;
 }
 
-footer h2{
-    font-family:'Oswald', sans-serif;
-    font-size:3rem;
-    margin-bottom:30px;
-}
-
-.contact{
-    margin:10px 0;
-    font-size:1.1rem;
-}
-
-.small{
-    margin-top:30px;
-    font-size:0.8rem;
-    opacity:0.7;
-}
-
-/* =========================
-   ✨ SCROLL REVEAL ANIMATION
-========================= */
-
-.reveal{
-    opacity:0;
-    transform:translateY(40px);
-    transition:opacity 0.9s cubic-bezier(0.2, 0.8, 0.2, 1),
-               transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
-    will-change:opacity, transform;
-}
-
-.reveal.active{
-    opacity:1;
-    transform:translateY(0);
-}
-
-/* optional subtle stagger helpers */
-.reveal.delay-1{ transition-delay:0.1s; }
-.reveal.delay-2{ transition-delay:0.2s; }
-.reveal.delay-3{ transition-delay:0.3s; }
-
-/* accessibility */
-@media (prefers-reduced-motion: reduce){
-    .reveal{
-        opacity:1 !important;
-        transform:none !important;
-        transition:none !important;
-    }
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-@media(max-width:800px){
-    .about{
-        grid-template-columns:1fr;
-    }
-
-    nav{
-        right:20px;
-        gap:20px;
-    }
-
-    section{
-        padding:80px 20px;
-    }
-
-    .section-title{
-        font-size:2.5rem;
-    }
-}
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
-<nav class="reveal">
-    <a href="#work">WORK</a>
-    <a href="#about">ABOUT</a>
-    <a href="#contact">CONTACT</a>
-</nav>
+<!-- ================= PANEL ================= -->
+<div id="panel">
+    <h2>WEBFLOW MVP</h2>
 
-<!-- HERO -->
-<header class="hero">
-    <div class="reveal">
-        <h1>COLIN<br>SCHUBERTH</h1>
-        <div class="subtitle">FILMMAKER & DIRECTOR</div>
-    </div>
-</header>
+    <button onclick="addSection()">+ Add Section</button>
+    <button onclick="save()">Save</button>
+    <button onclick="load()">Load</button>
+    <button onclick="reset()">Reset</button>
+</div>
 
-<!-- ABOUT -->
-<section id="about">
-    <div class="section-title reveal">ABOUT</div>
+<!-- ================= CANVAS ================= -->
+<div id="canvas">
 
-    <div class="about">
-        <p class="reveal delay-1">
-            I create short films, documentaries and feature films.
-            My work focuses on strong performances, musical integration
-            and building enjoyable, sustainable sets.
-        </p>
+    <div class="section" draggable="true">
+        <div class="del" onclick="this.parentElement.remove()">X</div>
 
-        <div class="about-image reveal delay-2">
-            <img src="colin.jpg" alt="Colin Schuberth">
+        <div class="hero-title" contenteditable="true">
+            COLIN SCHUBERTH
+        </div>
+
+        <div class="subtitle" contenteditable="true">
+            FILMMAKER & DIRECTOR
         </div>
     </div>
-</section>
 
-<!-- WORK -->
-<section id="work">
-    <div class="section-title reveal">FEATURED WORK</div>
+    <div class="section" draggable="true">
+        <div class="del" onclick="this.parentElement.remove()">X</div>
 
-    <div class="video reveal delay-1">
-        <iframe src="https://www.youtube.com/embed/esY0ptwivYE" allowfullscreen></iframe>
+        <div class="section-title" contenteditable="true">ABOUT</div>
+
+        <div class="about">
+            <div class="text" contenteditable="true">
+                I create cinematic short films focused on emotion, performance, and story.
+            </div>
+
+            <img src="https://picsum.photos/600/400" onclick="changeImage(this)">
+        </div>
     </div>
 
-    <div class="video reveal delay-2">
-        <iframe src="https://www.youtube.com/embed/ZW1_LI3Ajjg" allowfullscreen></iframe>
+    <div class="section" draggable="true">
+        <div class="del" onclick="this.parentElement.remove()">X</div>
+
+        <div class="section-title" contenteditable="true">WORK</div>
+
+        <div class="video">
+            <iframe src="https://www.youtube.com/embed/esY0ptwivYE"></iframe>
+        </div>
     </div>
 
-    <div class="video reveal delay-3">
-        <iframe src="https://www.youtube.com/embed/-5GqSJ3QuR4" allowfullscreen></iframe>
-    </div>
+</div>
 
-    <div class="center reveal">
-        <a class="button" href="#">VIEW MORE WORK</a>
-    </div>
-</section>
+<!-- ================= STYLE PANEL ================= -->
+<div id="stylePanel">
+    <h3 style="font-family:Oswald;">STYLE</h3>
 
-<!-- CONTACT -->
-<footer id="contact">
-    <h2 class="reveal">CONTACT</h2>
+    <label>Font Size</label>
+    <input type="range" min="12" max="28"
+        oninput="document.querySelectorAll('.text').forEach(t=>t.style.fontSize=this.value+'px')">
 
-    <div class="contact reveal delay-1">colinschub@gmail.com</div>
-    <div class="contact reveal delay-2">@colinschub1</div>
+    <label>Section Padding</label>
+    <input type="range" min="30" max="120"
+        oninput="document.querySelectorAll('.section').forEach(s=>s.style.padding=this.value+'px')">
+</div>
 
-    <div class="small reveal delay-3">© 2026 COLIN SCHUBERTH</div>
-</footer>
-
-<!-- =========================
-     SCROLL REVEAL SCRIPT
-========================= -->
 <script>
-const elements = document.querySelectorAll('.reveal');
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-            observer.unobserve(entry.target);
+/* ================= DRAG ================= */
+let dragged;
+
+document.querySelectorAll('.section').forEach(el=>{
+    el.addEventListener('dragstart', ()=> dragged = el);
+    el.addEventListener('dragover', e=> e.preventDefault());
+    el.addEventListener('drop', ()=>{
+        if(dragged && dragged!==el){
+            el.parentNode.insertBefore(dragged, el);
         }
     });
-}, {
-    threshold: 0.15
 });
 
-elements.forEach(el => observer.observe(el));
+/* ================= ADD SECTION ================= */
+function addSection(){
+    const div = document.createElement("div");
+    div.className = "section";
+    div.draggable = true;
+
+    div.innerHTML = `
+        <div class="del" onclick="this.parentElement.remove()">X</div>
+        <div class="section-title" contenteditable="true">New Section</div>
+        <div class="text" contenteditable="true">Edit content...</div>
+    `;
+
+    enableDrag(div);
+    document.getElementById("canvas").appendChild(div);
+}
+
+function enableDrag(el){
+    el.addEventListener('dragstart', ()=> dragged = el);
+    el.addEventListener('dragover', e=> e.preventDefault());
+    el.addEventListener('drop', ()=>{
+        if(dragged && dragged!==el){
+            el.parentNode.insertBefore(dragged, el);
+        }
+    });
+}
+
+/* ================= IMAGE ================= */
+function changeImage(img){
+    const url = prompt("Image URL:");
+    if(url) img.src = url;
+}
+
+/* ================= SAVE / LOAD ================= */
+function save(){
+    localStorage.setItem("cinematic_mvp", document.getElementById("canvas").innerHTML);
+    alert("Saved");
+}
+
+function load(){
+    const data = localStorage.getItem("cinematic_mvp");
+    if(data){
+        document.getElementById("canvas").innerHTML = data;
+
+        document.querySelectorAll('.section').forEach(enableDrag);
+    }
+}
+
+function reset(){
+    localStorage.removeItem("cinematic_mvp");
+    location.reload();
+}
+
+/* ================= AUTO LOAD ================= */
+window.onload = ()=> load();
+
 </script>
 
 </body>
