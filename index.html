@@ -107,19 +107,40 @@ h2{
     font-size:1.2rem;
     line-height:1.8;
 }
-
+    
 .about-image{
-    min-height:350px;
-
-    background:
-    radial-gradient(circle,
-      black 25%,
-      transparent 26%)
-      0 0/8px 8px;
-
-    border:3px solid black;
+    position:relative;
+    border:4px solid black;
+    overflow:hidden;
+    min-height:500px;
 }
 
+.about-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    filter:grayscale(100%) contrast(120%);
+}
+
+/* halftone overlay */
+.about-image::after{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background-image:
+    radial-gradient(
+        circle,
+        rgba(0,0,0,.55) 18%,
+        transparent 20%
+    );
+
+    background-size:8px 8px;
+    mix-blend-mode:multiply;
+    opacity:.35;
+    pointer-events:none;
+}
 .video-wrapper{
     border:3px solid black;
     margin-bottom:50px;
@@ -217,7 +238,7 @@ SCHUBERTH
 </h1>
 
 <p class="subtitle">
-FILMMAKER & DIRECTOR
+FILMMAKER • DIRECTOR
 </p>
 
 </div>
@@ -238,8 +259,8 @@ integration and enjoyable and sustainable sets.
 </p>
 </div>
 
-<div class="about-image"></div>
-
+<div class="about-image">
+    <img src="colin.jpg" alt="Colin Schuberth">
 </div>
 
 </section>
