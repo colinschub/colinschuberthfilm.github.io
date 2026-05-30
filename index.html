@@ -1,18 +1,156 @@
+```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My Video Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Colin Schuberth | Filmmaker & Director</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background:#0f0f0f;
+    color:white;
+    line-height:1.6;
+}
+
+header{
+    min-height:70vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:40px;
+}
+
+h1{
+    font-size:4rem;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    font-size:1.3rem;
+    color:#cfcfcf;
+}
+
+section{
+    max-width:1100px;
+    margin:auto;
+    padding:60px 20px;
+}
+
+h2{
+    margin-bottom:20px;
+    font-size:2rem;
+}
+
+.about{
+    font-size:1.15rem;
+    color:#d7d7d7;
+}
+
+.video-grid{
+    display:grid;
+    gap:40px;
+}
+
+.video-card{
+    background:#181818;
+    border-radius:12px;
+    padding:20px;
+}
+
+iframe{
+    width:100%;
+    aspect-ratio:16/9;
+    border:none;
+}
+
+.video-title{
+    margin-top:15px;
+    font-size:1.2rem;
+}
+
+.contact{
+    text-align:center;
+}
+
+.contact a{
+    color:white;
+    text-decoration:none;
+}
+
+footer{
+    text-align:center;
+    padding:40px;
+    color:#999;
+}
+</style>
 </head>
+
 <body>
-  <h1>Your Name</h1>
 
-  <h2>My Reel</h2>
-  <iframe width="800" height="450"
-    src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
-    allowfullscreen>
-  </iframe>
+<header>
+    <h1>Colin Schuberth</h1>
+    <p class="subtitle">Filmmaker & Director</p>
+</header>
 
-  <h2>Contact</h2>
-  <p>Email: your@email.com</p>
+<section>
+    <h2>About</h2>
+    <p class="about">
+        I create short films, documentaries, and feature films.
+        My work focuses on visual storytelling, cinematic imagery,
+        and character-driven narratives.
+    </p>
+</section>
+
+<section>
+    <h2>Featured Work</h2>
+
+    <div class="video-grid">
+
+        <div class="video-card">
+            <iframe
+                src="https://www.youtube.com/embed/ZW1_LI3Ajjg"
+                allowfullscreen>
+            </iframe>
+            <div class="video-title">Featured Film</div>
+        </div>
+
+    </div>
+</section>
+
+<section class="contact">
+    <h2>Contact</h2>
+
+    <p>
+        Email:
+        <a href="mailto:colinschub@gmail.com">
+            colinschub@gmail.com
+        </a>
+    </p>
+
+    <br>
+
+    <p>
+        Instagram:
+        <a href="https://instagram.com/colinschub1">
+            @colinschub1
+        </a>
+    </p>
+</section>
+
+<footer>
+    © 2026 Colin Schuberth
+</footer>
+
 </body>
 </html>
+```
